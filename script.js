@@ -94,12 +94,19 @@ function updateGraphics() {
 function downloadGraphic() {
     var targetGraphic = document.querySelector(".graphicDisplay");
 
-    html2canvas(targetGraphic, { scale: 2, useCORS: true }).then(function(canvas) {
-        var pngImage = canvas.toDataURL("image/png");
-        var downloadLink = document.createElement("a");
-        downloadLink.download = "OreoWeather_Forecast.png";
-        downloadLink.href = pngImage;
-        downloadLink.click();
+    // Wait until all custom fonts are completely ready in the browser
+    document.fonts.ready.then(function() {
+        html2canvas(targetGraphic, { 
+            scale: 2, 
+            useCORS: true,
+            logging: false // Keeps your console clean
+        }).then(function(canvas) {
+            var pngImage = canvas.toDataURL("image/png");
+            var downloadLink = document.createElement("a");
+            downloadLink.download = "OreoWeather_Forecast.png";
+            downloadLink.href = pngImage;
+            downloadLink.click();
+        });
     });
 }
 
