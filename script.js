@@ -92,20 +92,16 @@ function updateGraphics() {
 }
 
 function downloadGraphic() {
-    // 1. Tell the script which container box to snap a photo of
-    var targetGraphic = document.querySelector(".dayCards");
+    var targetGraphic = document.querySelector(".graphicDisplay");
 
-    // 2. Run the screenshot engine (scale 2 makes the text look double sharp!)
     html2canvas(targetGraphic, { scale: 2, useCORS: true }).then(function(canvas) {
-        
-        // 3. Convert the digital drawing into an image path link
         var pngImage = canvas.toDataURL("image/png");
         var downloadLink = document.createElement("a");
-        
-        // 4. Fake a mouse click to download it automatically to your computer
         downloadLink.download = "OreoWeather_Forecast.png";
         downloadLink.href = pngImage;
         downloadLink.click();
     });
+}
+
 }
 
