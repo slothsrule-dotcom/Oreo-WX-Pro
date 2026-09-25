@@ -106,7 +106,7 @@ function downloadGraphic() {
             downloadLink.download = "OreoWeather_Forecast.png";
             downloadLink.href = pngImage;
             downloadLink.click();
-        });
+        }, 200);
     });
 }
 
